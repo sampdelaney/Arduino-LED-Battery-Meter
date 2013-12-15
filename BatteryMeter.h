@@ -9,10 +9,9 @@ public:
 	BatteryMeter(float voltageMin, float voltageMax, Adc* adc);
 	float getPercentage();
 private:
-	// used for calculating voltage percentage
 	float _voltageMin;
 	float _voltageMax;
-	// used for converting 
+	float _voltageRange;
 	Adc *_adc;
 };
 #endif /* #ifndef BATTERYMETER_H*/
