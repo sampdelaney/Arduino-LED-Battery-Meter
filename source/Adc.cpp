@@ -15,7 +15,22 @@ int Adc::read()
 	return analogRead(_pin);
 }
 
+int Adc::readAverage()
+{
+	int cummulativeValue = 0;
+	for(int i = 0; i < ADC_AVERAGING_LENGTH; i++) {
+		cummulativeValue += read();
+		delay(ADC_AVERAGING_DELAY);
+	}
+	return cummulativeValue / ADC_AVERAGING_LENGTH;
+}
+
 float Adc::readVolts()
 {
 	return read() * _voltsPerVal;
+}
+
+float Adc::readVoltsAverage()
+{
+	return readAverage() * _voltsPerVal;
 }

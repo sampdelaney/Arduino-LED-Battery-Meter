@@ -16,7 +16,7 @@ LedBargraph::LedBargraph(int segments, int startPin, float minValue, float maxVa
 void LedBargraph::setValue(float value)
 {
 	// determine the number of leds to light
-	int barHeight = int(((value - _minValue) / _range) * _segments);
+	int barHeight = int(value * _segments);
 	// turn on and off the appropriate leds
 	for(int i = 0; i < _segments; i++) {
 		digitalWrite(_startPin + i, i <= barHeight ? HIGH : LOW);
