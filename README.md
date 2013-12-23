@@ -22,6 +22,12 @@ For a comparison against more procedural implementation of something functionall
 * 1 x Breadboard/Prototype Board
 * 1 x 9V Battery Holder with Battery to measure
 
+## Installation
+1. Copy the source folder to your Arduino libraries folder is (e.g. `C:\Users\JoeBloggs\Documents\Arduino\libraries`)
+2. Rename it to something like 'Arduino LED Battry Meter'
+3. Copy [BatteryChargeIndicator.ino](source/BatteryChargeIndicator.ino) to your Arduino projects folder (or anywhere not in the source folder).
+4. Open [BatteryChargeIndicator.ino](source/BatteryChargeIndicator.ino) in the Arduino IDE.
+
 ## Measuring Battery Voltage
 Most, if not all Arduino's have a built-in [10-bit 0-5V ADC](http://arduino.cc/en/Tutorial/AnalogInputPins) that will measure the voltage on a specified input pin and provide you with a 32-bit integer. Be aware that the value will always be in the range of 0 - 1023 (hence 10-bit = 2^10 - 1). If we were to connect our 9V battery directly to one of the Arduino's ADC pins, we would not be able to tell whether the battery was empty or not until its voltage dropped below 5V (the Aduino's measureable range), and what's worse is that we could damage it. To bring the battery's voltage within range of the Arduino's ADC, we can use a [potential divider](http://en.wikipedia.org/wiki/Voltage_divider) circuit to linearly pre-scale it. Getting the right R1 and R2 values can be quite easy using the formular but getting values for commonly available resistors can be tricky. The actual R1 and R2 values I've specified in the requirements will give a maximum output voltage of 4.9V when the input is 9V, which is fine since you can simply take this into consideration in software. In the project's Fritzing sketch, I used a 1K Ohm and a 200 Ohm in series to make up the resistence. An alternative solution would be to use a variable resistor (potentiometer) and simply "tune" it the desired resistance using a multimeter.
 
