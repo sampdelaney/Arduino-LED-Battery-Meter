@@ -1,5 +1,5 @@
 #include "LedBargraph.h"
-#include <Arduino.h>
+#include "Arduino.h"
 
 LedBargraph::LedBargraph(int segments, int startPin, float minValue, float maxValue)
 {
